@@ -26,7 +26,7 @@
 #        209.132.182.63 registry.access.redhat.com
 
   - name: Subscribe the box 
-    redhat_subscription: state=present username={{ rhn_user_name }} password={{ rhn_password }}  pool='^(Employee SKU)$'
+    redhat_subscription: state=present username={{ rhn_user_name }} password={{ rhn_password }}  pool='^(OpenShift Business Partner Supported NFR)$'
 
   - name: Enable only required repositories with Subscription Manager
     command: subscription-manager repos --disable="*" --enable="rhel-7-server-rpms" --enable="rhel-7-server-extras-rpms" --enable="rhel-7-server-ose-3.3-rpms"
