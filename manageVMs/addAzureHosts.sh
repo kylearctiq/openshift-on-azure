@@ -2,10 +2,10 @@
 
 location="canadaeast"
 resourceGroupName="openshift-arctiq"
-vnetName="openshift-workshop-canadaeast-vnet"
+vnetName="arctiq-canadaeast-vnet"
 subnetName="default"
 subnetAddressPrefix="10.0.0.0/24"
-networkSecurityGroup="master-workshop-canadaeast"
+networkSecurityGroup="master-canadaeast"
 storageAccountName="openshiftcanadaeast"
 adminUserName="arctiqadmin"
 
