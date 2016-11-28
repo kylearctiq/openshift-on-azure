@@ -65,7 +65,7 @@ source ./createMasterHost.sh
 
 #source ./createMasterHost.sh
 
-Add AppNode1
+#Add AppNode1
 nicName="ArctiqNode1NIC"
 vmName="arctiq-node1"
 vmSize="Standard_DS 2_V12"
@@ -92,7 +92,7 @@ source ./createNodeHost.sh
 
 #source ./createNodeHost.sh
 
-Add NFSNode1
+#Add NFSNode1
 nicName="ArctiqNFS1NIC"
 vmName="arctiq-nfs1"
 #vmSize="Standard_DS 2_V12"
