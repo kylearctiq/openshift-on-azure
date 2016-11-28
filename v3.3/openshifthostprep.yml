@@ -1,7 +1,7 @@
 ---
 - hosts: nodes
 # sudo: True
-  remote_user: artiqteam
+  remote_user: artiqadmin
   become: True
   become_method: sudo
   vars:
