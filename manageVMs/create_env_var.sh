@@ -1,0 +1,1 @@
+export location="canadaeast" resourceGroupName="openshift-arctiq" vnetName="arctiq-canadaeast-vnet" subnetName="default" subnetAddressPrefix="10.0.0.0/24" networkSecurityGroup="master-canadaeast" storageAccountName="openshiftcanadaeast" adminUserName="arctiqadmin" publicIPName="arctiqjumpserverip" nicName="arctiqjumpservernic" vmName="arctiq-jump-server" vmSize="Standard_DS1_V2"
