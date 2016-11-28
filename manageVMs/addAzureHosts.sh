@@ -68,7 +68,7 @@ source ./createMasterHost.sh
 #Add AppNode1
 nicName="ArctiqNode1NIC"
 vmName="arctiq-node1"
-vmSize="Standard_DS 2_V12"
+#vmSize="Standard_DS2_V12"
 vmSize="Standard_DS2_V2"
 echo "Adding $vmName"
 
@@ -77,7 +77,7 @@ source ./createNodeHost.sh
 #Add AppNode2
 #nicName="ArctiqNode2NIC"
 #vmName="arctiq-node2"
-#vmSize="Standard_DS 2_V12"
+#vmSize="Standard_DS2_V12"
 #vmSize="Standard_DS2_V2"
 #echo "Adding $vmName"
 
@@ -86,8 +86,8 @@ source ./createNodeHost.sh
 #Add AppNode3
 #nicName="ArctiqNode3NIC"
 #vmName="arctiq-node3"
-#vmSize="Standard_DS 2_V12"
-#vmSize="Standard_DS	2_V2"
+#vmSize="Standard_DS2_V12"
+#vmSize="Standard_DS2_V2"
 #echo "Adding $vmName"
 
 #source ./createNodeHost.sh
@@ -96,7 +96,7 @@ source ./createNodeHost.sh
 nicName="ArctiqNFS1NIC"
 vmName="arctiq-nfs1"
 #vmSize="Standard_DS 2_V12"
-vmSize="Standard_DS	2_V2"
+vmSize="Standard_DS2_V2"
 echo "Adding $vmName"
 
 source ./createNodeHost.sh
