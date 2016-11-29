@@ -8,7 +8,7 @@ nfs
 # Set variables common for all OSEv3 hosts
 [OSEv3:vars]
 # SSH user, this user should allow ssh based auth without requiring a password
-ansible_ssh_user=veer
+ansible_ssh_user=arctiqadmin
 
 # If ansible_ssh_user is not root, ansible_sudo must be set to true
 ansible_sudo=true
@@ -17,7 +17,18 @@ ansible_become=yes
 # To deploy origin, change deployment_type to origin
 deployment_type=openshift-enterprise
 
-openshift_master_default_subdomain=apps.devday.ocpcloud.com
+
+#containerized=true
+
+#os_sdn_network_plugin_name=redhat/openshift-ovs-multitenant
+
+#This will allow for 1022 PODS per host
+#openshift_master_portal_net=172.17.0.0/16
+#osm_cluster_network_cidr=10.2.0.0/16
+#osm_host_subnet_length=10
+
+
+openshift_master_default_subdomain=apps.azure.ocp.arctiq.ca
 osm_default_node_selector="region=primary"
 openshift_hosted_router_selector='region=infra,zone=router'
 openshift_registry_selector='region=infra'
@@ -25,7 +36,6 @@ openshift_master_api_port=443
 openshift_master_console_port=443
 
 openshift_hosted_registry_storage_nfs_directory=/exports
-
 
 # Metrics
 openshift_hosted_metrics_deploy=true
@@ -36,9 +46,14 @@ openshift_hosted_metrics_storage_nfs_options='*(rw,root_squash)'
 openshift_hosted_metrics_storage_volume_name=metrics
 openshift_hosted_metrics_storage_volume_size=10Gi
 
+# Allow all auth - This will allow anyone to login/create an account after OSE is installed)
+
+openshift_master_identity_providers=[{'name': 'allow_all', 'login': 'true', 'challenge': 'true', 'kind': 'AllowAllPasswordIdentityProvider'}]
 
 # enable htpasswd authentication
-openshift_master_identity_providers=[{'name': 'htpasswd_auth', 'login': 'true', 'challenge': 'true', 'kind': 'HTPasswdPasswordIdentityProvider', 'filename': '/etc/openshift/openshift-passwd'}]
+#openshift_master_identity_providers=[{'name': 'htpasswd_auth', 'login': 'true', 'challenge': 'true', 'kind': #'HTPasswdPasswordIdentityProvider', 'filename': '/etc/openshift/openshift-passwd'}]
+
+openshift_docker_options=' -l warn --ipv6=false'
 
 # host group for masters
 [masters]
@@ -49,9 +64,9 @@ openshift_master_identity_providers=[{'name': 'htpasswd_auth', 'login': 'true', 
 
 # host group for nodes, includes region info
 [nodes]
-10.0.0.5 openshift_node_labels="{'region': 'infra', 'zone': 'default'}"  openshift_scheduleable=false openshift_public_hostname=master.devday.ocpcloud.com
+10.0.0.5 openshift_node_labels="{'region': 'infra', 'zone': 'default'}"  openshift_scheduleable=false openshift_public_hostname=master.ocp.arctiq.ca
 10.0.0.6 openshift_node_labels="{'region': 'infra', 'zone': 'router'}" openshift_schedulable=True
-10.0.0.7 openshift_node_labels="{'region': 'infra', 'zone': 'router'}" openshift_schedulable=True
-10.0.0.8 openshift_node_labels="{'region': 'primary', 'zone': 'east'}" 
-10.0.0.9 openshift_node_labels="{'region': 'primary', 'zone': 'west'}" 
-10.0.0.10 openshift_node_labels="{'region': 'primary', 'zone': 'east'}" 
+#10.0.0.7 openshift_node_labels="{'region': 'infra', 'zone': 'router'}" openshift_schedulable=True
+10.0.0.7 openshift_node_labels="{'region': 'primary', 'zone': 'east'}" 
+#10.0.0.9 openshift_node_labels="{'region': 'primary', 'zone': 'west'}" 
+#10.0.0.10 openshift_node_labels="{'region': 'primary', 'zone': 'east'}" 
