@@ -1,4 +1,4 @@
- ---
+---
 - hosts: nodes
 # sudo: True
   remote_user: arctiqadmin
