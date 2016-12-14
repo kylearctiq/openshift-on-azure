@@ -25,7 +25,7 @@ os_sdn_network_plugin_name=redhat/openshift-ovs-multitenant
 #osm_cluster_network_cidr=10.2.0.0/16
 #osm_host_subnet_length=10
 
-osm_default_subdomain=ocp.dev.customer.com
+osm_default_subdomain=ocp-apps.dev.customer.com
 openshift_master_cluster_method=native
 openshift_master_cluster_hostname=ocp-master.dev.customer.com
 openshift_master_cluster_public_hostname=ocp.dev.customer.com
