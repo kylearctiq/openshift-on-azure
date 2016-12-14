@@ -35,8 +35,8 @@ openshift_master_cluster_public_hostname=ocp.dev.customer.com
 osm_default_node_selector="region=primary"
 openshift_hosted_router_selector='region=infra,zone=router'
 openshift_registry_selector='region=infra'
-openshift_master_api_port=443
-openshift_master_console_port=443
+openshift_master_api_port=8443
+openshift_master_console_port=8443
 
 #Make sure this is set to the proper location
 openshift_hosted_registry_storage_nfs_directory=/exports
