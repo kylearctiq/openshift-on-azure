@@ -1,0 +1,87 @@
+# Create an OSEv3 group that contains the masters and nodes groups
+[OSEv3:children]
+masters
+nodes
+etcd
+nfs
+
+# Set variables common for all OSEv3 hosts
+[OSEv3:vars]
+# SSH user, this user should allow ssh based auth without requiring a password
+ansible_ssh_user=root
+
+# If ansible_ssh_user is not root, ansible_sudo must be set to true
+#ansible_sudo=true
+#ansible_become=yes
+
+# To deploy origin, change deployment_type to origin
+deployment_type=openshift-enterprise
+
+#containerized=true
+os_sdn_network_plugin_name=redhat/openshift-ovs-multitenant
+
+#This will allow for 1022 PODS per host
+#openshift_master_portal_net=172.17.0.0/16
+#osm_cluster_network_cidr=10.2.0.0/16
+#osm_host_subnet_length=10
+
+osm_default_subdomain=ocp.dev.customer.com
+openshift_master_cluster_method=native
+openshift_master_cluster_hostname=ocp-master.dev.customer.com
+openshift_master_cluster_public_hostname=ocp.dev.customer.com
+
+#openshift_master_default_subdomain=apps.azure.ocp.arctiq.ca
+
+osm_default_node_selector="region=primary"
+openshift_hosted_router_selector='region=infra,zone=router'
+openshift_registry_selector='region=infra'
+openshift_master_api_port=443
+openshift_master_console_port=443
+
+#Make sure this is set to the proper location
+openshift_hosted_registry_storage_nfs_directory=/exports
+
+# Metrics
+openshift_hosted_metrics_deploy=true
+openshift_hosted_metrics_storage_kind=nfs
+openshift_hosted_metrics_storage_access_modes=['ReadWriteOnce']
+openshift_hosted_metrics_storage_nfs_directory=/exports
+openshift_hosted_metrics_storage_nfs_options='*(rw,root_squash)'
+openshift_hosted_metrics_storage_volume_name=metrics
+openshift_hosted_metrics_storage_volume_size=10Gi
+
+# Allow all auth - This will allow anyone to login/create an account after OSE is installed)
+openshift_master_identity_providers=[{'name': 'allow_all', 'login': 'true', 'challenge': 'true', 'kind': 'AllowAllPasswordIdentityProvider'}]
+
+# Enable htpasswd authentication
+#openshift_master_identity_providers=[{'name': 'htpasswd_auth', 'login': 'true', 'challenge': 'true', 'kind': #'HTPasswdPasswordIdentityProvider', 'filename': '/etc/openshift/openshift-passwd'}]
+
+openshift_docker_options=' -l warn --ipv6=false'
+
+# host group for masters
+[masters]
+osm101
+osm102
+osm103
+
+[etcd]
+osm101
+osm102
+osm103
+
+[nfs]
+osbindnfs101
+
+# host group for nodes, includes region info
+
+[nodes]
+osm101 openshift_node_labels="{'region': 'infra', 'zone': 'default'}" openshift_scheduleable=false
+osm102 openshift_node_labels="{'region': 'infra', 'zone': 'default'}" openshift_scheduleable=false
+osm103 openshift_node_labels="{'region': 'infra', 'zone': 'default'}" openshift_scheduleable=false
+
+osi101 openshift_node_labels="{'region': 'infra', 'zone': 'router'}" openshift_schedulable=True
+osi102 openshift_node_labels="{'region': 'infra', 'zone': 'router'}" openshift_schedulable=True
+
+osa101 openshift_node_labels="{'region': 'primary', 'zone': 'toronto'}" 
+osa102 openshift_node_labels="{'region': 'primary', 'zone': 'toronto'}" 
+osa103 openshift_node_labels="{'region': 'primary', 'zone': 'toronto'}" 
