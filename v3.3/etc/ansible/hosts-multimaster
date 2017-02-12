@@ -25,11 +25,10 @@ os_sdn_network_plugin_name=redhat/openshift-ovs-multitenant
 #osm_cluster_network_cidr=10.2.0.0/16
 #osm_host_subnet_length=10
 
-osm_default_subdomain=ocp-apps.dev.customer.com
+osm_default_subdomain=ocp-apps.azure.ocp.arctiq.ca
 openshift_master_cluster_method=native
-openshift_master_cluster_hostname=ocp-master.dev.customer.com
-openshift_master_cluster_public_hostname=ocp.dev.customer.com
-
+openshift_master_cluster_hostname=ocp-master.azure.ocp.arctiq.ca
+openshift_master_cluster_public_hostname=ocp.azure.ocp.arctiq.ca
 #openshift_master_default_subdomain=apps.azure.ocp.arctiq.ca
 
 osm_default_node_selector="region=primary"
@@ -42,13 +41,13 @@ openshift_master_console_port=8443
 openshift_hosted_registry_storage_nfs_directory=/exports
 
 # Metrics
-openshift_hosted_metrics_deploy=true
-openshift_hosted_metrics_storage_kind=nfs
-openshift_hosted_metrics_storage_access_modes=['ReadWriteOnce']
-openshift_hosted_metrics_storage_nfs_directory=/exports
-openshift_hosted_metrics_storage_nfs_options='*(rw,root_squash)'
-openshift_hosted_metrics_storage_volume_name=metrics
-openshift_hosted_metrics_storage_volume_size=10Gi
+#openshift_hosted_metrics_deploy=true
+#openshift_hosted_metrics_storage_kind=nfs
+#openshift_hosted_metrics_storage_access_modes=['ReadWriteOnce']
+#openshift_hosted_metrics_storage_nfs_directory=/exports
+#openshift_hosted_metrics_storage_nfs_options='*(rw,root_squash)'
+#openshift_hosted_metrics_storage_volume_name=metrics
+#openshift_hosted_metrics_storage_volume_size=10Gi
 
 # Allow all auth - This will allow anyone to login/create an account after OSE is installed)
 openshift_master_identity_providers=[{'name': 'allow_all', 'login': 'true', 'challenge': 'true', 'kind': 'AllowAllPasswordIdentityProvider'}]
