@@ -1,5 +1,4 @@
 [nodes]
-#10.0.0.5
 arctiq-master1
-#arctiq-master2
-#arctiq-master3
+arctiq-master2
+arctiq-master3
