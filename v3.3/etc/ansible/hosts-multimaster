@@ -59,28 +59,28 @@ openshift_docker_options=' -l warn --ipv6=false'
 
 # host group for masters
 [masters]
-osm101
-osm102
-osm103
+arctiq-master1
+arctiq-master2
+arctiq-master3
 
 [etcd]
-osm101
-osm102
-osm103
+arctiq-master1
+arctiq-master2
+arctiq-master3
 
 [nfs]
-osbindnfs101
+arctiq-master1
 
 # host group for nodes, includes region info
 
 [nodes]
-osm101 openshift_node_labels="{'region': 'infra', 'zone': 'default'}" openshift_scheduleable=false
-osm102 openshift_node_labels="{'region': 'infra', 'zone': 'default'}" openshift_scheduleable=false
-osm103 openshift_node_labels="{'region': 'infra', 'zone': 'default'}" openshift_scheduleable=false
+arctiq-master1 openshift_node_labels="{'region': 'infra', 'zone': 'default'}" openshift_scheduleable=false
+arctiq-master2 openshift_node_labels="{'region': 'infra', 'zone': 'default'}" openshift_scheduleable=false
+arctiq-master3 openshift_node_labels="{'region': 'infra', 'zone': 'default'}" openshift_scheduleable=false
 
-osi101 openshift_node_labels="{'region': 'infra', 'zone': 'router'}" openshift_schedulable=True
-osi102 openshift_node_labels="{'region': 'infra', 'zone': 'router'}" openshift_schedulable=True
+arctiq-inode1 openshift_node_labels="{'region': 'infra', 'zone': 'router'}" openshift_schedulable=True
+arctiq-inode2 openshift_node_labels="{'region': 'infra', 'zone': 'router'}" openshift_schedulable=True
 
-osa101 openshift_node_labels="{'region': 'primary', 'zone': 'toronto'}" 
-osa102 openshift_node_labels="{'region': 'primary', 'zone': 'toronto'}" 
-osa103 openshift_node_labels="{'region': 'primary', 'zone': 'toronto'}" 
+arctiq-node1 openshift_node_labels="{'region': 'primary', 'zone': 'toronto'}" 
+arctiq-node2 openshift_node_labels="{'region': 'primary', 'zone': 'toronto'}" 
+#arctiq-node3 openshift_node_labels="{'region': 'primary', 'zone': 'toronto'}" 
