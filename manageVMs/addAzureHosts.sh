@@ -6,7 +6,7 @@ vnetName="arctiq-canadacentral-vnet"
 subnetName="default"
 subnetAddressPrefix="10.0.0.0/24"
 networkSecurityGroup="master-canadacentral"
-storageAccountName="openshiftcanadacentral"
+storageAccountName="ocpcanadacentral"
 adminUserName="arctiqadmin"
 
 # Find subnetId
@@ -40,9 +40,9 @@ publicIPName="ArctiqMaster3PublicIP"
 nicName="ArctiqMaster3NIC"
 vmName="arctiq-master3"
 #vmSize="Standard_DS2_V2"
-#echo "Adding $vmName"
+echo "Adding $vmName"
 
-#source ./createMasterHost.sh
+source ./createMasterHost.sh
 
 # add additional storage for Registry and Metrics PVs.
 azure vm disk attach-new $resourceGroupName $vmName 120
@@ -57,13 +57,13 @@ echo "Adding $vmName"
 source ./createMasterHost.sh
 
 #Add InfraNode2
-#publicIPName="ArctiqInfraNode2PublicIP"
-#nicName="ArctiqInfraNode2NIC"
-#vmName="arctiq-inode2"
-#vmSize="Standard_DS2_V2"
-#echo "Adding $vmName"
+publicIPName="ArctiqInfraNode2PublicIP"
+nicName="ArctiqInfraNode2NIC"
+vmName="arctiq-inode2"
+vmSize="Standard_DS2_V2"
+echo "Adding $vmName"
 
-#source ./createMasterHost.sh
+source ./createMasterHost.sh
 
 #Add AppNode1
 nicName="ArctiqNode1NIC"
@@ -75,13 +75,13 @@ echo "Adding $vmName"
 source ./createNodeHost.sh
 
 #Add AppNode2
-#nicName="ArctiqNode2NIC"
-#vmName="arctiq-node2"
+nicName="ArctiqNode2NIC"
+vmName="arctiq-node2"
 #vmSize="Standard_DS2_V12"
-#vmSize="Standard_DS2_V2"
-#echo "Adding $vmName"
+vmSize="Standard_DS2_V2"
+echo "Adding $vmName"
 
-#source ./createNodeHost.sh
+source ./createNodeHost.sh
 
 #Add AppNode3
 #nicName="ArctiqNode3NIC"
