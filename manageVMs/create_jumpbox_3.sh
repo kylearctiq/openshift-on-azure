@@ -1,0 +1,11 @@
+azure vm create --resource-group $resourceGroupName \
+    --name $vmName \
+    --location $location \
+    --vm-size $vmSize \
+    --subnet-id $subnetId \
+    --nic-names $nicName \
+    --os-type linux \
+    --image-urn RHEL \
+    --storage-account-name $storageAccountName \
+    --admin-username $adminUserName \
+    --ssh-publickey-file ~/.ssh/id_rsa.pub
