@@ -1,12 +1,12 @@
 #!/bin/bash
 
-location="canadaeast"
-resourceGroupName="openshift-arctiq"
-vnetName="arctiq-canadaeast-vnet"
+location="canadacentral"
+resourceGroupName="ocp_on_azure"
+vnetName="arctiq-canadacentral-vnet"
 subnetName="default"
 subnetAddressPrefix="10.0.0.0/24"
-networkSecurityGroup="master-canadaeast"
-storageAccountName="openshiftcanadaeast"
+networkSecurityGroup="master-canadacentral"
+storageAccountName="openshiftcanadacentral"
 adminUserName="arctiqadmin"
 
 # Find subnetId
@@ -27,18 +27,18 @@ echo "Adding $vmName"
 source ./createMasterHost.sh
 
 # Add Master Host
-#publicIPName="ArctiqMaster2PublicIP"
-#nicName="ArctiqMaster2NIC"
-#vmName="arctiq-master2"
-#vmSize="Standard_DS2_V2"
-#echo "Adding $vmName"
+publicIPName="ArctiqMaster2PublicIP"
+nicName="ArctiqMaster2NIC"
+vmName="arctiq-master2"
+vmSize="Standard_DS2_V2"
+echo "Adding $vmName"
 
-#source ./createMasterHost.sh
+source ./createMasterHost.sh
 
 # Add Master Host
-#publicIPName="ArctiqMaster3PublicIP"
-#nicName="ArctiqMaster3NIC"
-#vmName="arctiq-master3"
+publicIPName="ArctiqMaster3PublicIP"
+nicName="ArctiqMaster3NIC"
+vmName="arctiq-master3"
 #vmSize="Standard_DS2_V2"
 #echo "Adding $vmName"
 
