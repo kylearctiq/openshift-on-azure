@@ -8,11 +8,11 @@ nfs
 # Set variables common for all OSEv3 hosts
 [OSEv3:vars]
 # SSH user, this user should allow ssh based auth without requiring a password
-ansible_ssh_user=root
+ansible_ssh_user=arctiqadmin
 
 # If ansible_ssh_user is not root, ansible_sudo must be set to true
-#ansible_sudo=true
-#ansible_become=yes
+ansible_sudo=true
+ansible_become=yes
 
 # To deploy origin, change deployment_type to origin
 deployment_type=openshift-enterprise
