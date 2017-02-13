@@ -27,22 +27,22 @@ echo "Adding $vmName"
 source ./0-createMasterHost.sh
 
 # Add Master Host
-publicIPName="ArctiqMaster2PublicIP"
-nicName="ArctiqMaster2NIC"
-vmName="arctiq-master2"
-vmSize="Standard_DS2_V2"
-echo "Adding $vmName"
+#publicIPName="ArctiqMaster2PublicIP"
+#nicName="ArctiqMaster2NIC"
+#vmName="arctiq-master2"
+#vmSize="Standard_DS2_V2"
+#echo "Adding $vmName"
 
-source ./0-createMasterHost.sh
+#source ./0-createMasterHost.sh
 
 # Add Master Host
-publicIPName="ArctiqMaster3PublicIP"
-nicName="ArctiqMaster3NIC"
-vmName="arctiq-master3"
-vmSize="Standard_DS2_V2"
-echo "Adding $vmName"
+#publicIPName="ArctiqMaster3PublicIP"
+#nicName="ArctiqMaster3NIC"
+#vmName="arctiq-master3"
+#vmSize="Standard_DS2_V2"
+#echo "Adding $vmName"
 
-source ./0-createMasterHost.sh
+#source ./0-createMasterHost.sh
 
 # add additional storage for Registry and Metrics PVs.
 azure vm disk attach-new $resourceGroupName $vmName 120
@@ -92,13 +92,22 @@ source ./0-createNodeHost.sh
 
 #source ./0-createNodeHost.sh
 
-#Add NFSNode1
-nicName="ArctiqNFS1NIC"
-vmName="arctiq-nfs1"
-#vmSize="Standard_DS 2_V12"
-vmSize="Standard_DS2_V2"
-echo "Adding $vmName"
+#Add AppNode4
+#nicName="ArctiqNode4NIC"
+#vmName="arctiq-node4"
+#vmSize="Standard_DS2_V12"
+#vmSize="Standard_DS2_V2"
+#echo "Adding $vmName"
 
-source ./0-createNodeHost.sh
+#source ./0-createNodeHost.sh
+
+#Add NFSNode1 - If you want a seperate NFS Server from the master
+#nicName="ArctiqNFS1NIC"
+#vmName="arctiq-nfs1"
+#vmSize="Standard_DS 2_V12"
+#vmSize="Standard_DS2_V2"
+#echo "Adding $vmName"
+
+#source ./0-createNodeHost.sh
 
 azure vm list --resource-group $resourceGroupName
