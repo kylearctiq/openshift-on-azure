@@ -2,6 +2,10 @@
 [OSEv3:children]
 masters
 nodes
+
+#If you plan to use a multimaster setup
+#etcd
+
 nfs
 
 # Set variables common for all OSEv3 hosts
@@ -18,14 +22,14 @@ deployment_type=openshift-enterprise
 
 #containerized=true
 
-#os_sdn_network_plugin_name=redhat/openshift-ovs-multitenant
+os_sdn_network_plugin_name=redhat/openshift-ovs-multitenant
 
 #This will allow for 1022 PODS per host
 #openshift_master_portal_net=172.17.0.0/16
 #osm_cluster_network_cidr=10.2.0.0/16
 #osm_host_subnet_length=10
 
-
+#Single Master Setup
 openshift_master_default_subdomain=apps.azure.ocp.arctiq.ca
 osm_default_node_selector="region=primary"
 openshift_hosted_router_selector='region=infra,zone=router'
@@ -33,8 +37,21 @@ openshift_registry_selector='region=infra'
 openshift_master_api_port=8443
 openshift_master_console_port=8443
 
-openshift_hosted_registry_storage_nfs_directory=/exports
+#Multi Master Setup
+#osm_default_subdomain=apps.azure.ocp.arctiq.ca
+#openshift_master_cluster_method=native
+#openshift_master_cluster_hostname=master.azure.ocp.arctiq.ca
+#openshift_master_cluster_public_hostname=ocp.azure.ocp.arctiq.ca
+#
+#openshift_master_default_subdomain=apps.azure.ocp.arctiq.ca
+#
+#osm_default_node_selector="region=primary"
+#openshift_hosted_router_selector='region=infra,zone=router'
+#openshift_registry_selector='region=infra'
+#openshift_master_api_port=8443
+#openshift_master_console_port=8443
 
+openshift_hosted_registry_storage_nfs_directory=/exports
 
 # Metrics
 openshift_hosted_metrics_deploy=true
@@ -62,18 +79,35 @@ openshift_hosted_logging_deployer_version=v3.4
 # Allow all auth - This will allow anyone to login/create an account after OSE is installed)
 openshift_master_identity_providers=[{'name': 'allow_all', 'login': 'true', 'challenge': 'true', 'kind': 'AllowAllPasswordIdentityProvider'}]
 
+openshift_docker_options=' -l warn --ipv6=false'
+
 # host group for masters
 [masters]
 arctiq-master1
+
+#Multi Master Configuration
+#[etcd]
+#arctiq-master1
+#arctiq-master2
+#arctiq-master3
 
 [nfs]
 arctiq-master1
 
 # host group for nodes, includes region info
 [nodes]
+#Single Master Setup
 arctiq-master1 openshift_hostname=arctiq-master1 openshift_node_labels="{'region': 'infra', 'zone': 'default'}"  openshift_scheduleable=false openshift_public_hostname=master.azure.ocp.arctiq.ca 
+
+#Multi Master Setup
+#arctiq-master1 openshift_hostname=arctiq-master1 openshift_hostname=arctiq-master1 openshift_node_labels="{'region': 'infra', 'zone': 'default'}"  openshift_scheduleable=false
+#arctiq-master2 openshift_hostname=arctiq-master2 openshift_hostname=arctiq-master1 openshift_node_labels="{'region': 'infra', 'zone': 'default'}"  openshift_scheduleable=false
+#arctiq-master3 openshift_hostname=arctiq-master3 openshift_hostname=arctiq-master1 openshift_node_labels="{'region': 'infra', 'zone': 'default'}"  openshift_scheduleable=false
+
 arctiq-inode1 openshift_hostname=arctiq-inode1 openshift_node_labels="{'region': 'infra', 'zone': 'router'}" openshift_schedulable=True
 arctiq-inode2 openshift_hostname=arctiq-inode2 openshift_node_labels="{'region': 'infra', 'zone': 'router'}" openshift_schedulable=True
 arctiq-node1 openshift_hostname=arctiq-node1 openshift_node_labels="{'region': 'primary', 'zone': 'toronto'}" 
 arctiq-node2 openshift_hostname=arctiq-node2 openshift_node_labels="{'region': 'primary', 'zone': 'toronto'}" 
+#Add Extra App Nodes Here
 #arctiq-node3 openshift_hostname=arctiq-node3 openshift_node_labels="{'region': 'primary', 'zone': 'toronto'}"
+#arctiq-node4 openshift_hostname=arctiq-node3 openshift_node_labels="{'region': 'primary', 'zone': 'toronto'}"
