@@ -35,6 +35,15 @@ echo "Adding $vmName"
 
 source ./0-createMasterHost.sh
 
+# Add Master Host
+publicIPName="ArctiqMaster3PublicIP"
+nicName="ArctiqMaster3NIC"
+vmName="arctiq-master3"
+vmSize="Standard_DS2_V2"
+echo "Adding $vmName"
+
+source ./0-createMasterHost.sh
+
 # add additional storage for Registry and Metrics PVs.
 azure vm disk attach-new $resourceGroupName $vmName 120
 
