@@ -7,3 +7,5 @@ node -v -y
 npm -v -y
 npm install -g azure-cli
 git clone https://github.com/kylearctiq/openshift-on-azure.git
+cd openshift-on-azure/manageVMs/
+chmod +x -R *.sh
