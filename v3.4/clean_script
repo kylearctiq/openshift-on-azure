@@ -1,0 +1,18 @@
+nodes
+ 
+[OSEv3:vars]
+ansible_ssh_user=root
+deployment_type=openshift-enterprise
+ 
+[nodes]
+ 
+#osa101.ocpdev.cibc.com openshift_node_labels="{'region': 'infra', 'zone': 'default'}"
+#osa102.ocpdev.cibc.com openshift_node_labels="{'region': 'infra', 'zone': 'default'}"
+#osa103.ocpdev.cibc.com openshift_node_labels="{'region': 'infra', 'zone': 'default'}"
+ 
+#osa101.ocpdev.cibc.com openshift_node_labels="{'region': 'infra', 'zone': 'router'}"
+#osa102.ocpdev.cibc.com openshift_node_labels="{'region': 'infra', 'zone': 'router'}"
+ 
+#osa101.ocpdev.cibc.com openshift_node_labels="{'region': 'primary', 'zone': 'toronto'}"
+osa102.ocpdev.cibc.com openshift_node_labels="{'region': 'primary', 'zone': 'toronto'}"
+osa103.ocpdev.cibc.com openshift_node_labels="{'region': 'primary', 'zone': 'toronto'}"
