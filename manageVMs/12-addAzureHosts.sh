@@ -24,7 +24,7 @@ vmName="arctiq-master1"
 vmSize="Standard_DS2_V2"
 echo "Adding $vmName"
 
-source ./createMasterHost.sh
+source ./0-createMasterHost.sh
 
 # Add Master Host
 publicIPName="ArctiqMaster2PublicIP"
@@ -33,7 +33,7 @@ vmName="arctiq-master2"
 vmSize="Standard_DS2_V2"
 echo "Adding $vmName"
 
-source ./createMasterHost.sh
+source ./0-createMasterHost.sh
 
 # add additional storage for Registry and Metrics PVs.
 azure vm disk attach-new $resourceGroupName $vmName 120
@@ -45,7 +45,7 @@ vmName="arctiq-inode1"
 vmSize="Standard_DS2_V2"
 echo "Adding $vmName"
 
-source ./createMasterHost.sh
+source ./0-createMasterHost.sh
 
 #Add InfraNode2
 publicIPName="ArctiqInfraNode2PublicIP"
@@ -54,7 +54,7 @@ vmName="arctiq-inode2"
 vmSize="Standard_DS2_V2"
 echo "Adding $vmName"
 
-source ./createMasterHost.sh
+source ./0-createMasterHost.sh
 
 #Add AppNode1
 nicName="ArctiqNode1NIC"
@@ -63,7 +63,7 @@ vmName="arctiq-node1"
 vmSize="Standard_DS2_V2"
 echo "Adding $vmName"
 
-source ./createNodeHost.sh
+source ./0-createNodeHost.sh
 
 #Add AppNode2
 nicName="ArctiqNode2NIC"
@@ -72,7 +72,7 @@ vmName="arctiq-node2"
 vmSize="Standard_DS2_V2"
 echo "Adding $vmName"
 
-source ./createNodeHost.sh
+source ./0-createNodeHost.sh
 
 #Add AppNode3
 #nicName="ArctiqNode3NIC"
@@ -81,7 +81,7 @@ source ./createNodeHost.sh
 #vmSize="Standard_DS2_V2"
 #echo "Adding $vmName"
 
-#source ./createNodeHost.sh
+#source ./0-createNodeHost.sh
 
 #Add NFSNode1
 nicName="ArctiqNFS1NIC"
@@ -90,6 +90,6 @@ vmName="arctiq-nfs1"
 vmSize="Standard_DS2_V2"
 echo "Adding $vmName"
 
-source ./createNodeHost.sh
+source ./0-createNodeHost.sh
 
 azure vm list --resource-group $resourceGroupName
