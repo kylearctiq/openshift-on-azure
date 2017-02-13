@@ -1,7 +1,7 @@
 azure network nsg create --resource-group $resourceGroupName \
       --name $networkSecurityGroup \
       --location $location
-
+      
 azure network nsg rule create --resource-group $resourceGroupName \
     --nsg-name $networkSecurityGroup \
     --name allow-https \
