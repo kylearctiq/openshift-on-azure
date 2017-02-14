@@ -1,1 +1,1 @@
-ansible-playbook -i hosts.openshiftprep openshifthostprep.yml
+ansible-playbook -i hosts.openshiftprep openshiftdockerhostprep.yml
