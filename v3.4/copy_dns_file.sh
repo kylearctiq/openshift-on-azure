@@ -1,0 +1,1 @@
+for node in $(cat node_list); do echo $node; ssh $node '/bin/bash -c "sudo echo  'search lpcrj1vgr5pe3fnyy5fs1dvned.ux.internal.cloudapp.net' > /etc/resolv.conf && echo 'nameserver 40.90.4.6' >> /etc/resolv.conf &&  echo 'nameserver 168.63.129.16' >> /etc/resolv.conf &&  chattr +i /etc/resolv.conf"'
